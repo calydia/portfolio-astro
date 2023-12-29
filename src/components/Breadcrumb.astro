@@ -1,0 +1,33 @@
+---
+const currentSlug = Astro.props.currentSlug;
+const currentTitle = Astro.props.currentTitle;
+const parentURL = Astro.props.parentURL;
+const parentName = Astro.props.parentName;
+---
+
+<nav aria-label="Breadcrumbs" class="col-span-2 w-full max-w-xl lg:max-w-4xl p-4-px pb-0 mx-auto text-lt-gray dark:text-white md:px-8-px text-base md:pt-8">
+  <ul class="block list-none m-0 py-0 p-4-px">
+    <li class="inline">
+      <a href="/" class="underline underline-offset-4 decoration-2 text-lt-blue-dark dark:text-dk-blue-light hover:text-lt-purple hover:decoration-4 dark:hover:text-wheat focus:text-black dark:focus:text-white focus:outline focus:outline-2 focus:outline-offset-8 focus:no-underline focus:outline-black dark:focus:outline-white">
+        Me
+      </a>
+      <span class="mx-2" aria-hidden="true">/</span>
+    </li>
+
+    { currentSlug !== parentURL ?
+      <li class="inline">
+        <a href={`/${ parentURL }`} class="underline underline-offset-4 decoration-2 text-lt-blue-dark dark:text-dk-blue-light hover:text-lt-purple hover:decoration-4 dark:hover:text-wheat focus:text-black dark:focus:text-white focus:outline focus:outline-2 focus:outline-offset-8 focus:no-underline focus:outline-black dark:focus:outline-white">
+          { parentName }  
+        </a>
+        <span class="mx-2" aria-hidden="true">/</span>
+      </li>
+      <li class="inline" aria-current="true">
+      { currentTitle }
+    </li>
+    :
+    <li class="inline" aria-current="true">
+      { currentTitle }
+    </li>
+    }
+  </ul>
+</nav>

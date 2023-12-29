@@ -1,0 +1,117 @@
+---
+import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+---
+
+<footer class="p-4-px lg:px-8-px lg:py-4-px border-t-8 border-solid border-blue-tory bg-lt-blue-light dark:bg-dk-purple">
+  <div class="text-center">
+    <button id="back-to-top" class="text-center button--alternative hover--border item--transition">
+      <Icon name="arrow-up-circle-solid" class="h-12 w-12 mx-auto" />
+      Back to top
+    </button>
+  </div>
+  <div class="md:flex md:justify-between max-w-[1500px] mx-auto">
+    <ul class="flex items-center list-none m-0">
+      <li>
+        <a class="some-icon github-link bg-center block bg-no-repeat" href="https://github.com/calydia" rel="noopener noreferrer">Visit my page on GitHub</a>
+      </li>
+      <li>
+        <a class="some-icon gitlab-link bg-center block bg-no-repeat" href="https://gitlab.com/Calydia" rel="noopener noreferrer">Visit my page on GitLab</a>
+      </li>
+      <li>
+        <a class="some-icon linkedin-link bg-center block bg-no-repeat" href="https://www.linkedin.com/in/sanna-makinen" rel="noopener noreferrer">Visit my profile on LinkedIn</a>
+      </li>
+    </ul>
+    <div class="flex items-center">
+      <span class="logo-dark mr-4">
+        <Image
+          src="/sm-logo-darkblue.png"
+          alt=""
+          width={35}
+          height={27}
+          aria-hidden="true"
+        />
+      </span>
+      <span class="logo-light mr-4">
+        <Image
+          src="/sm-logo-lightblue.png"
+          alt=""
+          width={35}
+          height={27}
+          aria-hidden="true"
+        />
+      </span>
+      <div>
+        <a
+        href="https://blog.sanna.ninja"
+        rel="noopener noreferrer"
+        class="font-light inline-block text-black dark:text-white"
+      >
+        My blog
+      </a>
+      <br />
+      <a
+      href="https://a11y.sanna.ninja/en"
+      rel="noopener noreferrer"
+      class="font-light mt-1 inline-block text-black dark:text-white"
+    >
+      My accessibility site
+    </a>
+      </div>
+    </div>
+  </div>
+  <script is:inline src="/skip-content.js"></script>
+</footer>
+
+<script>
+  const backToTop = document.querySelectorAll('#back-to-top');
+
+  backToTop.forEach((button) => {
+    button.addEventListener('click', () => {
+      const target = document.getElementById('page-top');
+      (target as HTMLElement).setAttribute('tabindex', '-1');
+      (target as HTMLElement).focus();
+    });
+  });
+</script>
+
+<style>
+  .some-icon {
+    height: 50px;
+    text-indent: -9999px;
+    transition: background-size 0.1s;
+    width: 50px;
+  }
+  .some-icon:hover {
+    transition: background-size 0.1s;
+  }
+
+  .github-link {
+    background-image: url("/logos/black/github.svg");
+    background-size: 30px 30px;
+
+    @apply dark:bg-[url('/logos/white/github.svg')]
+  }
+  .github-link:hover {
+    background-size: 34px 34px;
+  }
+  .gitlab-link {
+    background-image: url("/logos/black/gitlab.svg");
+    background-size: 45px 45px;
+
+    @apply dark:bg-[url('/logos/white/gitlab.svg')]
+  }
+  .gitlab-link:hover {
+    background-size: 49px 49px;
+  }
+
+  .linkedin-link {
+    background-image: url("/logos/black/linkedin.svg");
+    background-size: 30px 30px;
+
+    @apply dark:bg-[url('/logos/white/linkedin.svg')]
+  }
+  .linkedin-link:hover {
+    background-size: 34px 34px;
+  }
+</style>
