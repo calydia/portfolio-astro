@@ -13,14 +13,9 @@ const educationResponse = await fetch("https://drupal.ampere.corrupted.pw/graphq
         courses(limit: 100) {
           items {
             title
-            certificateLink {
-              uri
-              title
-            }
             date
             educator
             year
-            relatedExperienceName
           }
         }
       }

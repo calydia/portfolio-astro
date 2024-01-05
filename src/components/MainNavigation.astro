@@ -36,7 +36,7 @@ const menuLinks = [
 
     const activeClass = (asPath === item.url) ? 'active-link': 'non-active-link';
     {/* aria-current should be true when the menu parent is active */}
-    const ariaCurrentPath = (asPath.includes(item.url) && item.url !== '/') ? true : undefined;
+    const ariaCurrentPath = (asPath !== undefined && asPath.includes(item.url) && item.url !== '/') ? true : undefined;
     {/* aria-current should be "page" when the actual page is active */}
     const ariaCurrentPage = (asPath === item.url) ? 'page' : undefined;
     {/* if the page is active, we want to use that, otherwise check for menu parent */}
