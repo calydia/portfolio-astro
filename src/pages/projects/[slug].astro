@@ -69,6 +69,7 @@ const page = Astro.props;
       { page.title }
     </h1>
     <div class="mx-4-px bodytext text-xl text-lt-gray dark:text-dk-gray">
+      <span>Year: { page.year }</span>
       <Fragment set:html={ page.content } />
     </div>
   

@@ -24,4 +24,5 @@ export default interface Page {
     id: string,
     name: string,
   }],
+  year: number,
 }
