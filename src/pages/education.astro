@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import dayjs from 'dayjs';
+import type Education from '../interfaces/education';
 
 const educationResponse = await fetch("https://drupal.ampere.corrupted.pw/graphql",
   {
@@ -30,11 +31,11 @@ const educationResponse = await fetch("https://drupal.ampere.corrupted.pw/graphq
 const educationJson = await educationResponse.json();
 const educationContent = educationJson.data;
 
-const items = educationContent.courses.items;
+const items = educationContent.courses.items; console.log(items);
 
 // https://stackoverflow.com/a/46431916/2124978
-const groupBy = (items, key) => items.reduce(
-  (result, item) => ({
+const groupBy = (items: any, key: number) => items.reduce(
+  (result: any, item: any) => ({
     ...result,
     [item[key]]: [
       ...(result[item[key]] || []),
@@ -65,7 +66,7 @@ const groupedItems = groupBy(items, "year");
         return(
           <div class="my-4">
             <h2 class="text-2xl	lg:text-3xl	inline-block my-0 px-2 lg:px-8 lg:my-4 border-b-4 gradient-border-light text-lt-gray dark:text-white dark:gradient-border-dark">{item}</h2>
-            {groupedItems[item].map((node) => {
+            {groupedItems[item].map((node: Education) => {
               return (
                 <div class="text-lt-gray dark:text-white p-4-px lg:py-4 lg:px-12-px">
                   <h3 class="mb-4 text-lg">
@@ -74,9 +75,6 @@ const groupedItems = groupBy(items, "year");
                   <div>
                     <span class="block text-base my-1 mx-5">{dayjs(node.date).format(`YYYY/MM`)}</span>
                     <span class="block text-base my-1 mx-5">Educator: {node.educator}</span>
-
-                    {node.relatedExperienceName ? <span>Related to work experience: {node.relatedExperienceName}</span> : ''}
-                    {node.certificateLink.uri ? <a href={node.certificateLink.uri}>{node.cerfificateLink.title}</a> : ''}
                   </div>
                 </div>
               );
