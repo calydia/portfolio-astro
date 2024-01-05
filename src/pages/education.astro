@@ -34,7 +34,7 @@ const educationContent = educationJson.data;
 const items = educationContent.courses.items; console.log(items);
 
 // https://stackoverflow.com/a/46431916/2124978
-const groupBy = (items: any, key: number) => items.reduce(
+const groupBy = (items: any, key: any) => items.reduce(
   (result: any, item: any) => ({
     ...result,
     [item[key]]: [
