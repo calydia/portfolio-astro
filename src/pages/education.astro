@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import dayjs from 'dayjs';
+import type Education from '../interfaces/education';
 
 const educationResponse = await fetch("https://drupal.ampere.corrupted.pw/graphql",
   {
